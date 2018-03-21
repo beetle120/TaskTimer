@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+
+<html>
+    <style type="text/css">
+        /* http://meyerweb.com/eric/tools/css/reset/ 
+		v2.0 | 20110126
+		License: none (public domain)
+		*/
+
+		html, body, div, span, applet, object, iframe,
+		h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+		a, abbr, acronym, address, big, cite, code,
+		del, dfn, em, img, ins, kbd, q, s, samp,
+		small, strike, strong, sub, sup, tt, var,
+		b, u, i, center,
+		dl, dt, dd, ol, ul, li,
+		fieldset, form, label, legend,
+		table, caption, tbody, tfoot, thead, tr, th, td,
+		article, aside, canvas, details, embed, 
+		figure, figcaption, footer, header, hgroup, 
+		menu, nav, output, ruby, section, summary,
+		time, mark, audio, video {
+			margin: 0;
+			padding: 0;
+			border: 0;
+			font-size: 100%;
+			font: inherit;
+			vertical-align: baseline;
+		}
+		/* HTML5 display-role reset for older browsers */
+		article, aside, details, figcaption, figure, 
+		footer, header, hgroup, menu, nav, section {
+			display: block;
+		}
+		body {
+			line-height: 1;
+		}
+		ol, ul {
+			list-style: none;
+		}
+		blockquote, q {
+			quotes: none;
+		}
+		blockquote:before, blockquote:after,
+		q:before, q:after {
+			content: '';
+			content: none;
+		}
+		table {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+		/* End reset */
+
+        @font-face {
+    		font-family: DigitalTime;
+    		src: url(digital-7_edit.ttf);
+		}
+		
+		@font-face {
+    		font-family: HelveticaNeueThin;
+    		src: url(helveticaneuethin.otf);
+		}
+
+        body {
+            background-color: black;
+        }
+        
+        #display {
+            display: grid;
+            grid-template-columns: repeat(1, auto);
+            grid-auto-rows: minmax(100px, auto);
+        }
+        .displayItem {
+            height: calc(100vh / 7);
+            background-color: black;
+            border: white solid 1px;
+        }
+        .itemName {
+            color: white;
+            font-size: 7vh;
+            padding: 1vh 2vw 0 2vw;
+            font-family: HelveticaNeueThin;
+            text-align: center;
+        }
+        .timeDifference {
+            font-family: DigitalTime;
+            color: #AADEB3;
+            font-size: 6vw;
+            text-align: center;
+            padding-top: 0.7vh;
+        }
+
+        #selectedItem {
+            visibility: hidden;
+            position: fixed;
+            top:0;
+            left: 0;
+            background-color: black;
+            width: 100vw;
+            height: 100vh;
+        }
+        #selectedHousework{
+            visibility: hidden;
+            position: fixed;
+            top:0;
+            left: 0;
+            background-color: black;
+            width: 100vw;
+            height: 100vh;
+        }
+        #selectedOnlineGame{
+            visibility: hidden;
+            position: fixed;
+            top:0;
+            left: 0;
+            background-color: black;
+            width: 100vw;
+            height: 100vh;
+            text-align: center;
+        }
+        #displayItemName {
+            color: white;
+            font-size: 12vh;
+            padding: 6vh 2vw 0 2vw;
+            font-family: HelveticaNeueThin;
+            text-align: center;
+        }
+        #countUpTimer {
+            font-family: DigitalTime;
+            color: #AADEB3;
+            font-size: 12vw;
+            text-align: center;
+            padding-top: 2.7vh;
+        }
+        #stopButton{
+            color: #e34f4f;
+			width: 450px;
+			height: 100px;
+			margin-left: auto;
+			margin-right: auto;
+			margin-top: 1em;
+			border: 5px #e34f4f solid;
+			border-radius: 100px;
+			cursor: pointer;
+			text-align: center;
+			font-size: 5em;
+			padding-top: 0.3em;
+            padding-bottom: 0.3em;
+			font-family: HelveticaNeueThin;
+        }
+        #cancelButton{
+            color: white;
+            width: 450px;
+            height: 100px;
+            margin-left: auto;
+            margin-right: auto;
+            border: 5px white solid;
+            border-radius: 100px;
+            cursor: pointer;
+            text-align: center;
+            font-size: 5em;
+            padding-top: 0.3em;
+            padding-bottom: 0.3em;
+            font-family: HelveticaNeueThin;
+        }
+        #cancelButtonBoxDisplay{
+            width: 100vw;
+            text-align: center;
+            height: 1vw;
+            position: absolute;
+            bottom: 10em;
+            height: 200px;
+        }
+        #cancelButtonBoxHousework{
+            width: 100vw;
+            text-align: center;
+            height: 1vw;
+            position: absolute;
+            bottom: 10em;
+            height: 200px;
+        }
+        #cancelButtonBoxOnlineGame{
+            width: 100vw;
+            text-align: center;
+            height: 1vw;
+            position: absolute;
+            bottom: 10em;
+            height: 200px;
+        }
+
+        /*Housework Styles */
+        #timerText {
+			color: white;
+			font-family: HelveticaNeueThin;
+			font-size: 3em;
+			margin: 50px 0px 0px 30px;
+		}
+		#timer {
+			font-family: DigitalTime;
+			font-size: 20em;
+			color: #A6B1D2;
+			text-align: center;
+			padding: 0;
+			margin: 0;
+		}
+		#runButton {
+			color: white;
+			width: 450px;
+			height: 100px;
+			margin-left: auto;
+			margin-right: auto;
+			margin-top: 1em;
+			border: 5px white solid;
+			border-radius: 100px;
+			cursor: pointer;
+			text-align: center;
+			font-size: 3em;
+			padding-top: 35px;
+			font-family: HelveticaNeueThin;
+		}
+		
+		#endTimeText {
+			color: white;
+			font-family: HelveticaNeueThin;
+			font-size: 1.5em;
+			margin: 100px 0px 0px 200px;
+		}
+		
+		#endTime {
+			font-family: DigitalTime;
+			font-size: 10em;
+			color: #A6B1D2;
+			text-align: center;
+		}
+
+        /*Online Game Styles */
+        #timerTextOG {
+			color: white;
+			font-family: HelveticaNeueThin;
+			font-size: 3em;
+			margin: 50px 0px 0px 30px;
+		}
+		#timerOG {
+			font-family: DigitalTime;
+			font-size: 20em;
+			color: #A6B1D2;
+			text-align: center;
+			padding: 0;
+			margin: 0;
+		}
+		#runButtonOG {
+			color: white;
+			width: 450px;
+			height: 100px;
+			margin-left: auto;
+			margin-right: auto;
+			margin-top: 1em;
+			border: 5px white solid;
+			border-radius: 100px;
+			cursor: pointer;
+			text-align: center;
+			font-size: 3em;
+			padding-top: 35px;
+			font-family: HelveticaNeueThin;
+		}
+		
+		#nextTimeTextOG {
+            color: white;
+            font-family: HelveticaNeueThin;
+            font-size: 3.5em;
+            margin: 1.5em 0;
+		}
+
+        #addTimeOG {
+            width: 80vw;
+            height: 1em;
+            margin: 0 auto;
+            font-size: 5em;
+            background-color: #666;
+            color: white;
+            text-align: right;
+            border: 2px solid white;
+        }
+
+        #addTimeButtonOG {
+			color: white;
+			width: 450px;
+			height: 100px;
+			margin-left: auto;
+			margin-right: auto;
+			margin-top: 1em;
+			border: 5px white solid;
+			border-radius: 100px;
+			cursor: pointer;
+			text-align: center;
+			font-size: 3em;
+			padding-top: 35px;
+			font-family: HelveticaNeueThin;
+		}
+
+    
+
+    </style>
+
+    <script type ="text/javascript">
+        var listItems = new Array;
+        var listItems = new Array;
+        var tempArray = new Array;
+        var secOnlineGameWeekOG = 18000;
+        var mainScreenNextOnlineGameTime = "";
+        
+        
+        window.onload = function() {
+            //temp
+            // localStorage.timeDifferenceArray = "300000,600000,511041,0,18000000,1800000";
+            // localStorage.itemStartTime = 0;
+            // localStorage.currentItemID = -10
+            //localStorage.localSecondsRemaining = 0;
+			//localStorage.pauseMilli = new Date().getTime();
+			//localStorage.countDown = false;
+            //end temp
+
+            if (localStorage.getItem("localSecondsRemaining") === null) {
+                localStorage.timeDifferenceArray = "300000,600000,511041,0,18000000,1800000";
+                localStorage.itemStartTime = 0;
+                localStorage.currentItemID = -10
+                //Housework Timer
+                localStorage.localSecondsRemaining = 0;
+				localStorage.pauseMilli = new Date().getTime();
+				localStorage.countDown = false;
+                localStorage.houseworkInList = "Bottom";
+                //Online Games
+                localStorage.localSecondsRemainingOG = 0;
+				localStorage.pauseMilliOG = new Date().getTime();
+				localStorage.countDownOG = false;
+                localStorage.onlineGameInList = "Bottom"
+
+            }
+            if (localStorage.getItem("localSecondsRemainingOG") === null) {
+                localStorage.localSecondsRemainingOG = 0;
+				localStorage.pauseMilliOG = new Date().getTime();
+				localStorage.countDownOG = false;
+                localStorage.onlineGameInList = "Bottom"
+            }
+
+            listItems[0] = {itemName: "RSS", timeDifference: 0, id:0};
+            listItems[1] = {itemName: "Game", timeDifference: 0, id:1};
+            listItems[2] = {itemName: "Movie", timeDifference: 0, id:2};
+            listItems[3] = {itemName: "TV", timeDifference: 0, id:3};
+            listItems[4] = {itemName: "Project", timeDifference: 0, id:4};
+            listItems[5] = {itemName: "Tasks", timeDifference: 0, id:5};
+            startUp();
+            sortAndDisplay();
+            houseworkTimer();
+            onlineGameTimer();
+            
+        }
+        function startUp() {
+            var tempArray = localStorage.timeDifferenceArray.split(',');
+
+            for (var i = 0; i < listItems.length; i++) {
+                listItems[i].timeDifference = parseFloat(tempArray[i]);
+            }
+            if (localStorage.currentItemID >= 0){
+                runItem(localStorage.currentItemID);
+            } else if (localStorage.currentItemID == -1) {
+                runHousework();
+            } else if (localStorage.currentItemID == -2) {
+                runOnlineGame();
+            }
+        }
+
+        function runItem(id){
+            document.getElementById("countUpTimer").innerHTML = formatTimeDisplay("", 1);
+            document.getElementById("selectedItem").style.visibility = "visible";
+            document.getElementById("displayItemName").innerHTML = listItems[findItem(id)].itemName;
+            if (localStorage.itemStartTime == 0){
+                localStorage.currentItemID = id;
+                localStorage.itemStartTime = new Date().getTime();
+            } else {
+                document.getElementById("countUpTimer").innerHTML = formatTimeDisplay("", new Date().getTime() - localStorage.itemStartTime);
+            }     
+            var countupTimer = setInterval(function(){
+                if (localStorage.itemStartTime > 0){
+                    document.getElementById("countUpTimer").innerHTML = formatTimeDisplay("", new Date().getTime() - localStorage.itemStartTime);
+                } else {
+                    clearInterval(countupTimer);
+                }
+            },1000)
+        }
+        function runHousework(){
+            localStorage.currentItemID = -1;
+            document.getElementById("selectedHousework").style.visibility = "visible";
+        }
+        function runOnlineGame(){
+            localStorage.currentItemID = -2;
+            document.getElementById("selectedOnlineGame").style.visibility = "visible";
+        }
+        function cancelItem() {
+            document.getElementById("selectedHousework").style.visibility = "hidden";
+            document.getElementById("selectedOnlineGame").style.visibility = "hidden";
+            document.getElementById("selectedItem").style.visibility = "hidden";
+            localStorage.currentItemID = -10;
+            localStorage.itemStartTime = 0;
+            sortAndDisplay();
+        }
+
+        function stopItem(){
+            document.getElementById("selectedItem").style.visibility = "hidden";
+            listItems[findItem(localStorage.currentItemID)].timeDifference += new Date().getTime() - localStorage.itemStartTime;
+            localStorage.currentItemID = -10;
+            localStorage.itemStartTime = 0;
+            sortAndDisplay();
+        }
+
+        function sortAndDisplay() {
+  
+            listItems.sort(function(a, b){
+                return a.id - b.id;
+            })
+
+            
+
+            
+            //var tempArray = localStorage.timeDifferenceArray.split(',');
+
+            //for (var i = 0; i < listItems.length; i++) {
+            //    listItems[i].timeDifference = parseFloat(tempArray[i]);
+            //}
+
+            //sorts items in the array
+            localStorage.timeDifferenceArray = (listItems.map(function(elem){return elem.timeDifference;}).join(","));
+
+            listItems.sort(function(a, b){
+                return a.timeDifference - b.timeDifference;
+            })
+
+            var minimum =  listItems[0].timeDifference;
+
+            for (var i = 0; i < listItems.length; i++) {
+                listItems[i].timeDifference -= minimum;
+            }
+
+            document.getElementById("display").innerHTML = "";
+
+            if (localStorage.onlineGameInList == "Top"){
+                document.getElementById("display").innerHTML += "<div class='displayItem' onclick='runOnlineGame()'><div class='itemName'>Online Game</div><div class='timeDifference'>" + mainScreenNextOnlineGameTime + "</div></div>";
+            }
+            if (localStorage.houseworkInList == "Top"){
+                console.log(mainScreenNextOnlineGameTime);
+                document.getElementById("display").innerHTML += "<div class='displayItem' onclick='runHousework()'><div class='itemName'>Housework</div></div>";
+            }
+            // used to display the items
+            for (var i = 0; i < listItems.length; i++) {
+                document.getElementById("display").innerHTML += "<div class='displayItem' onclick='runItem(" + listItems[i].id + ")'><div class='itemName'>" +  listItems[i].itemName + "</div><div class='timeDifference'>" + formatTimeDisplay("+", listItems[i].timeDifference) + "</div></div>";
+            }
+            if (localStorage.houseworkInList == "Bottom"){
+                document.getElementById("display").innerHTML += "<div class='displayItem' onclick='runHousework()'><div class='itemName'>Housework</div></div>";
+            }
+            if (localStorage.onlineGameInList == "Bottom"){
+                console.log(mainScreenNextOnlineGameTime);
+                document.getElementById("display").innerHTML += "<div class='displayItem' onclick='runOnlineGame()'><div class='itemName'>Online Game</div><div class='timeDifference'>" + mainScreenNextOnlineGameTime + "</div></div>";
+            }
+        }
+        function formatTimeDisplay(preString, timeInMS) {
+            if (timeInMS > 0) {
+                formatSecondsDisplaying = Math.floor(timeInMS / 1000);
+                formatClockHours = Math.floor(formatSecondsDisplaying/3600);
+                formatClockMin = Math.floor((formatSecondsDisplaying % 3600) / 60);
+                formatClockSec = Math.floor(formatSecondsDisplaying - ((formatClockHours * 3600) + (formatClockMin * 60)));
+                finalFormat = preString + formatClockHours + ":" + addZero(formatClockMin) + ":" + addZero(formatClockSec);
+                return finalFormat;
+            } else {
+                finalFormat = ""
+                return finalFormat;
+            }
+        }
+
+        function addZero(i) {
+            if (i < 10) {
+                i = "0" + i;
+            }
+            return i;
+        }
+
+        function findItem(currentID) {
+            for (var i = 0; i < listItems.length; i++) {
+                if (listItems[i].id == currentID) {
+                    return i;
+                }
+            }
+        }
+
+        ///
+        ////Start timers///
+        ///
+
+        function addZero(i) {
+				if (i < 10) {
+					i = "0" + i;
+				}
+				return i;
+			}
+			
+        function getSecRemaining(pauseTime, remain, down, secWeek) { 
+            //pauseTime = The millisec that the button was last pressed, remain = Seconds remaining when button was last pressed, down = If the timer is counting up (false) or down (true).
+            
+            var diff; // Difference in time in millisec since button last click and now
+            var secRem; // Calculated actual sec remaining
+            
+            
+            diff = new Date().getTime() - pauseTime;
+            
+            if (down === true){
+                secRem = remain - (diff/1000);
+                secRem = secRem + ((diff/1000)*(secWeek/604800));
+            } else {
+                secRem = remain + ((diff/1000)*(secWeek/604800));
+            }
+            return secRem;
+        }
+
+        function formatAMPM(date) {
+            var hours = date.getHours();
+            var minutes = date.getMinutes();
+            var ampm = hours >= 12 ? 'pm' : 'am';
+            hours = hours % 12;
+            hours = hours ? hours : 12; // the hour '0' should be '12'
+            minutes = minutes < 10 ? '0'+minutes : minutes;
+            var strTime = hours + ':' + minutes + ' ' + ampm;
+            return strTime;
+        }
+
+        function getDayName(date) {
+            switch (date.getDay()) {
+                case 0:
+                    return "Sunday";
+                    break;
+                case 1:
+                    return "Monday";
+                    break;
+                case 2:
+                    return "Tuesday";
+                    break;
+                case 3:
+                    return "Wednesday";
+                    break;
+                case 4:
+                    return "Thursday";
+                    break;
+                case 5:
+                    return "Friday";
+                    break;
+                case 6:
+                    return "Saturday";
+            }
+        }
+
+        function getShortDayName(date) {
+            switch (date.getDay()) {
+                case 0:
+                    return "Sun";
+                    break;
+                case 1:
+                    return "Mon";
+                    break;
+                case 2:
+                    return "Tues";
+                    break;
+                case 3:
+                    return "Wed";
+                    break;
+                case 4:
+                    return "Thurs";
+                    break;
+                case 5:
+                    return "Fri";
+                    break;
+                case 6:
+                    return "Sat";
+            }
+        }
+
+        function hideClose() {
+            document.getElementById("cancelButtonBoxOnlineGame").style.display = "none"
+        }
+        function showClose() {
+            document.getElementById("cancelButtonBoxOnlineGame").style.display = "block"
+        }
+        ///
+        ///Start housework timer ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ///
+
+
+        function houseworkTimer() {
+			var secondsRemaining = 10;
+			var secHouseworkWeek = 3600;
+			var secondsDisplaying;
+			var clockHours;
+			var clockMin;
+			var clockSec;
+			var runButton = document.getElementById('runButton');
+			var hour24;
+			var AMPM;
+			
+            setHouseworkGUI();
+			
+			runButton.onclick = function() {
+				localStorage.localSecondsRemaining = getSecRemaining(parseFloat(localStorage.pauseMilli), parseFloat(localStorage.localSecondsRemaining), localStorage.countDown == "true", secHouseworkWeek);
+				localStorage.countDown = (localStorage.countDown == "false");
+				/*localStorage.localSecondsRemaining = secondsDisplaying;*/
+				localStorage.pauseMilli = new Date().getTime();
+				setHouseworkGUI();
+			};
+
+            setInterval(function(){ 
+				setHouseworkGUI();
+			}, 1000);
+			
+			
+			function setHouseworkGUI() {
+				var secRem = getSecRemaining(parseFloat(localStorage.pauseMilli), parseFloat(localStorage.localSecondsRemaining), localStorage.countDown == "true", secHouseworkWeek);
+				var down = (localStorage.countDown == "true");
+				/*var secDisplay;*/
+				var endTimeDate = new Date();
+				
+				if (secRem > 0){
+                    if (localStorage.houseworkInList == "Bottom"){
+                        localStorage.houseworkInList = "Top"
+                        sortAndDisplay();
+                    }
+					secondsDisplaying = secRem;
+					// Timer
+					document.getElementById("timerText").innerHTML = "Housework time remaining:";
+					document.getElementById("timer").style.color = '#A6B1D2';
+					
+					// End time display
+					if (down) {
+							endTimeDate.setTime(new Date().getTime() + (secondsDisplaying*1000));
+								if (endTimeDate.getHours() > 12) {
+									hour24 = endTimeDate.getHours() - 12;
+									AMPM = "PM";
+								} else {
+									hour24 = endTimeDate.getHours();
+									AMPM = "AM";
+								}
+							document.getElementById("endTimeText").innerHTML = "Finsh at:";
+							document.getElementById("endTime").innerHTML = hour24 + ":" + addZero(endTimeDate.getMinutes()) + " " + AMPM;
+						} else {
+							document.getElementById("endTimeText").innerHTML = "";
+							document.getElementById("endTime").innerHTML = "";
+						}
+				} else {
+                    if (localStorage.houseworkInList == "Top"){
+                        localStorage.houseworkInList = "Bottom"
+                        sortAndDisplay();
+                    }
+					// Timer
+					secondsDisplaying = -secRem;
+					document.getElementById("timerText").innerHTML = "Timer Expired - Current Bonus Time:";
+					document.getElementById("timer").style.color = '#AADEB3';
+					
+					document.getElementById("endTimeText").innerHTML = "";
+					document.getElementById("endTime").innerHTML = "";
+				}
+				
+				// button
+				if (down) {
+					document.getElementById("runButton").innerHTML = "End Housework";
+					document.getElementById("runButton").style.borderColor = '#FE4042';
+					document.getElementById("runButton").style.color = '#FE4042';
+				} else {
+					document.getElementById("runButton").innerHTML = "Start Housework";
+					document.getElementById("runButton").style.borderColor = '#90EE90';
+					document.getElementById("runButton").style.color = '#90EE90';
+				}
+				
+				// Time display
+				clockHours = Math.floor(secondsDisplaying/3600);
+				clockMin = Math.floor((secondsDisplaying % 3600) / 60);
+				clockSec = Math.floor(secondsDisplaying - ((clockHours * 3600) + (clockMin * 60)));
+				document.getElementById("timer").innerHTML = clockHours + ":" + addZero(clockMin) + ":" + addZero(clockSec);
+			}
+		};
+
+        ///
+        ///Start online game timer ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ///
+
+        function addOnlineGameSec() {
+            var textBoxValue = parseFloat(document.getElementById('addTimeOG').value)
+            var pauseMillisecond
+            if (isNaN(textBoxValue)) {
+                textBoxValue = 0;
+            }
+
+            localStorage.pauseMilliOG =  (textBoxValue * 1000 * (604800 / secOnlineGameWeekOG)) + parseFloat(localStorage.pauseMilliOG);
+
+            //localStorage.pauseMilliOG = pauseMillisecond - ((textBoxValue / (604800 / secOnlineGameWeekOG) * 1000))
+            document.getElementById('addTimeOG').value = "";
+        }
+
+        function onlineGameTimer() {
+			
+			var secondsDisplayingOG;
+			var clockHoursOG;
+			var clockMinOG;
+			var clockSecOG;
+			var runButtonOG = document.getElementById('runButtonOG');
+			var hour24OG;
+			var AMPMOG;
+                
+            setOnlineGameGUI();
+			
+			runButtonOG.onclick = function() {
+				localStorage.localSecondsRemainingOG = getSecRemaining(parseFloat(localStorage.pauseMilliOG), parseFloat(localStorage.localSecondsRemainingOG), localStorage.countDownOG == "true", secOnlineGameWeekOG);
+				localStorage.countDownOG = (localStorage.countDownOG == "false");
+				/*localStorage.localSecondsRemaining = secondsDisplaying;*/
+				localStorage.pauseMilliOG = new Date().getTime();
+				setOnlineGameGUI();
+			};
+
+            setInterval(function(){ 
+				setOnlineGameGUI();
+			}, 1000);
+			
+			
+			function setOnlineGameGUI() {
+				var secRemOG = getSecRemaining(parseFloat(localStorage.pauseMilliOG), parseFloat(localStorage.localSecondsRemainingOG), localStorage.countDownOG == "true", secOnlineGameWeekOG);
+				var downOG = (localStorage.countDownOG == "true");
+                var startTimeInSec
+				/*var secDisplay;*/
+				var endTimeDateOG = new Date();
+
+                // Working out time to play again
+                
+                startTimeInSec = secRemOG * (604800 / secOnlineGameWeekOG);
+                
+                var startAgainDate = new Date();
+
+                startAgainDate.setSeconds(startAgainDate.getSeconds() - startTimeInSec);
+
+                if (startTimeInSec > 0) { //less than a day
+                    document.getElementById("nextTimeTextOG").innerHTML = "You can play now";
+                    mainScreenNextOnlineGameTime = "";
+                } else if ( startTimeInSec < -604800 ) {
+                    document.getElementById("nextTimeTextOG").innerHTML = "You can play again on in over a week";
+                    mainScreenNextOnlineGameTime = "Week+";
+                } else if ( startTimeInSec < -86400 ) {
+                    document.getElementById("nextTimeTextOG").innerHTML = "You can play again on " + getDayName(startAgainDate) + "<br/>at " + formatAMPM(startAgainDate);
+                    mainScreenNextOnlineGameTime = getShortDayName(startAgainDate) + " " + formatAMPM(startAgainDate);
+                } else {
+                    document.getElementById("nextTimeTextOG").innerHTML = "You can play again at " + formatAMPM(startAgainDate);
+                    mainScreenNextOnlineGameTime = formatAMPM(startAgainDate);
+                }
+				
+                // END
+
+				if (secRemOG > 0){
+                    if (localStorage.onlineGameInList == "Bottom"){
+                        localStorage.onlineGameInList = "Top"
+                    }
+					secondsDisplayingOG = secRemOG;
+					// Timer
+					document.getElementById("timerTextOG").innerHTML = "Online game time remaining:";
+					document.getElementById("timerOG").style.color = '#90EE90';
+					
+					// End time display
+					if (downOG) {
+							endTimeDateOG.setTime(new Date().getTime() + (secondsDisplayingOG*1000));
+								if (endTimeDateOG.getHours() > 12) {
+									hour24OG = endTimeDateOG.getHours() - 12;
+									AMPMOG = "PM";
+								} else {
+									hour24OG = endTimeDateOG.getHours();
+									AMPMOG = "AM";
+								}
+						} else {
+						}
+				} else {
+                    if (localStorage.onlineGameInList == "Top"){
+                        localStorage.onlineGameInList = "Bottom"
+                    }
+					// Timer
+					secondsDisplayingOG = -secRemOG;
+					document.getElementById("timerTextOG").innerHTML = "No online games now - Timer Expired";
+					document.getElementById("timerOG").style.color = '#FE4042';
+					
+				}
+				
+				// button
+				if (downOG) {
+					document.getElementById("runButtonOG").innerHTML = "End online game";
+					document.getElementById("runButtonOG").style.borderColor = '#FE4042';
+					document.getElementById("runButtonOG").style.color = '#FE4042';
+				} else {
+					document.getElementById("runButtonOG").innerHTML = "Start online game";
+					document.getElementById("runButtonOG").style.borderColor = '#90EE90';
+					document.getElementById("runButtonOG").style.color = '#90EE90';
+				}
+				
+				// Time display
+				clockHoursOG = Math.floor(secondsDisplayingOG/3600);
+				clockMinOG = Math.floor((secondsDisplayingOG % 3600) / 60);
+				clockSecOG = Math.floor(secondsDisplayingOG - ((clockHoursOG * 3600) + (clockMinOG * 60)));
+				document.getElementById("timerOG").innerHTML = clockHoursOG + ":" + addZero(clockMinOG) + ":" + addZero(clockSecOG);
+			}
+            sortAndDisplay();
+        }
+    </script>
+    <body>
+        <div id="display"></div>
+        <div id="selectedItem">
+            <div id="displayItemName"></div>
+            <div id="countUpTimer">0:00:00</div>
+            <div id="stopButton" onclick="stopItem()">Stop</div>
+            <div id="cancelButtonBoxDisplay">
+                <div id="cancelButton" onclick="cancelItem()">Cancel</div>
+            </div>
+        </div>
+        <div id="selectedHousework">
+            <div id="timerText"></div> 
+            <div id="timer"></div>
+            <div id="runButton"></div>
+            <div id="endTimeText"></div>
+            <div id="endTime"></div>
+            <div id="cancelButtonBoxHousework">
+                 <div id="cancelButton" onclick="cancelItem()">Close</div>
+            </div>
+        </div>
+        <div id="selectedOnlineGame">
+            <div id="timerTextOG"></div> 
+            <div id="timerOG"></div>
+            <div id="runButtonOG"></div>
+            <div id="nextTimeTextOG"></div>
+            <input type="number" id="addTimeOG" onfocus="hideClose()" onblur="showClose()"></input>
+            <div id="addTimeButtonOG" onclick="addOnlineGameSec()">Add seconds</div>          
+            <div id="cancelButtonBoxOnlineGame">
+                 <div id="cancelButton" onclick="cancelItem()">Close</div>
+            </div>
+        </div>
+    </body>
+</html>
