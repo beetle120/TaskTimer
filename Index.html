@@ -326,7 +326,7 @@
             //end temp
 
             if (localStorage.getItem("localSecondsRemaining") === null) {
-                localStorage.timeDifferenceArray = "0,0,0,0,0,0";
+                localStorage.timeDifferenceArray = "0,0,0,0,0,0,0";
                 localStorage.itemStartTime = 0;
                 localStorage.currentItemID = -10
                 //Housework Timer
@@ -367,6 +367,7 @@
             listItems[3] = {itemName: "TV", timeDifference: 0, id:3};
             listItems[4] = {itemName: "Project", timeDifference: 0, id:4};
             listItems[5] = {itemName: "Tasks", timeDifference: 0, id:5};
+            listItems[6] = {itemName: "Learn", timeDifference: 0, id:6};
             startUp();
             sortAndDisplay();
             houseworkTimer();
