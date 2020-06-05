@@ -3,64 +3,64 @@
 <html>
     <style type="text/css">
         /* http://meyerweb.com/eric/tools/css/reset/ 
-		v2.0 | 20110126
-		License: none (public domain)
-		*/
+        v2.0 | 20110126
+        License: none (public domain)
+        */
 
-		html, body, div, span, applet, object, iframe,
-		h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-		a, abbr, acronym, address, big, cite, code,
-		del, dfn, em, img, ins, kbd, q, s, samp,
-		small, strike, strong, sub, sup, tt, var,
-		b, u, i, center,
-		dl, dt, dd, ol, ul, li,
-		fieldset, form, label, legend,
-		table, caption, tbody, tfoot, thead, tr, th, td,
-		article, aside, canvas, details, embed, 
-		figure, figcaption, footer, header, hgroup, 
-		menu, nav, output, ruby, section, summary,
-		time, mark, audio, video {
-			margin: 0;
-			padding: 0;
-			border: 0;
-			font-size: 100%;
-			font: inherit;
-			vertical-align: baseline;
-		}
-		/* HTML5 display-role reset for older browsers */
-		article, aside, details, figcaption, figure, 
-		footer, header, hgroup, menu, nav, section {
-			display: block;
-		}
-		body {
-			line-height: 1;
-		}
-		ol, ul {
-			list-style: none;
-		}
-		blockquote, q {
-			quotes: none;
-		}
-		blockquote:before, blockquote:after,
-		q:before, q:after {
-			content: '';
-			content: none;
-		}
-		table {
-			border-collapse: collapse;
-			border-spacing: 0;
-		}
-		/* End reset */
+        html, body, div, span, applet, object, iframe,
+        h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+        a, abbr, acronym, address, big, cite, code,
+        del, dfn, em, img, ins, kbd, q, s, samp,
+        small, strike, strong, sub, sup, tt, var,
+        b, u, i, center,
+        dl, dt, dd, ol, ul, li,
+        fieldset, form, label, legend,
+        table, caption, tbody, tfoot, thead, tr, th, td,
+        article, aside, canvas, details, embed, 
+        figure, figcaption, footer, header, hgroup, 
+        menu, nav, output, ruby, section, summary,
+        time, mark, audio, video {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+        }
+        /* HTML5 display-role reset for older browsers */
+        article, aside, details, figcaption, figure, 
+        footer, header, hgroup, menu, nav, section {
+            display: block;
+        }
+        body {
+            line-height: 1;
+        }
+        ol, ul {
+            list-style: none;
+        }
+        blockquote, q {
+            quotes: none;
+        }
+        blockquote:before, blockquote:after,
+        q:before, q:after {
+            content: '';
+            content: none;
+        }
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+        /* End reset */
 
         @font-face {
-    		font-family: DigitalTime;
-    		src: url(digital-7_edit.ttf);
-		}
-		
-		@font-face {
-    		font-family: HelveticaNeueThin;
-    		src: url(helveticaneuethin.otf);
-		}
+            font-family: DigitalTime;
+            src: url(digital-7_edit.ttf);
+        }
+        
+        @font-face {
+            font-family: HelveticaNeueThin;
+            src: url(helveticaneuethin.otf);
+        }
 
         body {
             background-color: black;
@@ -99,6 +99,7 @@
             background-color: black;
             width: 100vw;
             height: 100vh;
+            text-align: center;
         }
         #selectedHousework{
             visibility: hidden;
@@ -108,6 +109,7 @@
             background-color: black;
             width: 100vw;
             height: 100vh;
+            text-align: center;
         }
         #selectedOnlineGame{
             visibility: hidden;
@@ -135,19 +137,20 @@
         }
         #stopButton{
             color: #e34f4f;
-			width: 450px;
-			height: 100px;
-			margin-left: auto;
-			margin-right: auto;
-			margin-top: 1em;
-			border: 5px #e34f4f solid;
-			border-radius: 100px;
-			cursor: pointer;
-			text-align: center;
-			font-size: 5em;
-			padding-top: 0.3em;
+            width: 450px;
+            height: 100px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 1em;
+            border: 5px #e34f4f solid;
+            border-radius: 100px;
+            cursor: pointer;
+            text-align: center;
+            font-size: 5em;
+            padding-top: 0.3em;
             padding-bottom: 0.3em;
-			font-family: HelveticaNeueThin;
+            margin-bottom: 1em;
+            font-family: HelveticaNeueThin;
         }
         #cancelButton{
             color: white;
@@ -191,88 +194,88 @@
 
         /*Housework Styles */
         #timerText {
-			color: white;
-			font-family: HelveticaNeueThin;
-			font-size: 3em;
-			margin: 50px 0px 0px 30px;
-		}
-		#timer {
-			font-family: DigitalTime;
-			font-size: 20em;
-			color: #A6B1D2;
-			text-align: center;
-			padding: 0;
-			margin: 0;
-		}
-		#runButton {
-			color: white;
-			width: 450px;
-			height: 100px;
-			margin-left: auto;
-			margin-right: auto;
-			margin-top: 1em;
-			border: 5px white solid;
-			border-radius: 100px;
-			cursor: pointer;
-			text-align: center;
-			font-size: 3em;
-			padding-top: 35px;
-			font-family: HelveticaNeueThin;
-		}
-		
-		#endTimeText {
-			color: white;
-			font-family: HelveticaNeueThin;
-			font-size: 1.5em;
-			margin: 100px 0px 0px 200px;
-		}
-		
-		#endTime {
-			font-family: DigitalTime;
-			font-size: 10em;
-			color: #A6B1D2;
-			text-align: center;
-		}
+            color: white;
+            font-family: HelveticaNeueThin;
+            font-size: 3em;
+            margin: 50px 0px 0px 30px;
+        }
+        #timer {
+            font-family: DigitalTime;
+            font-size: 20em;
+            color: #A6B1D2;
+            text-align: center;
+            padding: 0;
+            margin: 0;
+        }
+        #runButton {
+            color: white;
+            width: 450px;
+            height: 100px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 1em;
+            border: 5px white solid;
+            border-radius: 100px;
+            cursor: pointer;
+            text-align: center;
+            font-size: 3em;
+            padding-top: 35px;
+            font-family: HelveticaNeueThin;
+        }
+        
+        #endTimeText {
+            color: white;
+            font-family: HelveticaNeueThin;
+            font-size: 1.5em;
+            margin: 100px 0px 0px 200px;
+        }
+        
+        #endTime {
+            font-family: DigitalTime;
+            font-size: 10em;
+            color: #A6B1D2;
+            text-align: center;
+        }
 
         /*Online Game Styles */
         #timerTextOG {
-			color: white;
-			font-family: HelveticaNeueThin;
-			font-size: 3em;
-			margin: 50px 0px 0px 30px;
-		}
-		#timerOG {
-			font-family: DigitalTime;
-			font-size: 20em;
-			color: #A6B1D2;
-			text-align: center;
-			padding: 0;
-			margin: 0;
-		}
-		#runButtonOG {
-			color: white;
-			width: 450px;
-			height: 100px;
-			margin-left: auto;
-			margin-right: auto;
-			margin-top: 1em;
-			border: 5px white solid;
-			border-radius: 100px;
-			cursor: pointer;
-			text-align: center;
-			font-size: 3em;
-			padding-top: 35px;
-			font-family: HelveticaNeueThin;
-		}
-		
-		#nextTimeTextOG {
+            color: white;
+            font-family: HelveticaNeueThin;
+            font-size: 3em;
+            margin: 50px 0px 0px 30px;
+        }
+        #timerOG {
+            font-family: DigitalTime;
+            font-size: 20em;
+            color: #A6B1D2;
+            text-align: center;
+            padding: 0;
+            margin: 0;
+        }
+        #runButtonOG {
+            color: white;
+            width: 450px;
+            height: 100px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 1em;
+            border: 5px white solid;
+            border-radius: 100px;
+            cursor: pointer;
+            text-align: center;
+            font-size: 3em;
+            padding-top: 35px;
+            font-family: HelveticaNeueThin;
+        }
+        
+        #nextTimeTextOG {
             color: white;
             font-family: HelveticaNeueThin;
             font-size: 3.5em;
             margin: 1.5em 0;
-		}
+        }
 
-        #addTimeOG {
+        #addTimeOG, #addTimeHousework, #addExtraTaskTime {
             width: 80vw;
             height: 1em;
             margin: 0 auto;
@@ -283,21 +286,21 @@
             border: 2px solid white;
         }
 
-        #addTimeButtonOG {
-			color: white;
-			width: 450px;
-			height: 100px;
-			margin-left: auto;
-			margin-right: auto;
-			margin-top: 1em;
-			border: 5px white solid;
-			border-radius: 100px;
-			cursor: pointer;
-			text-align: center;
-			font-size: 3em;
-			padding-top: 35px;
-			font-family: HelveticaNeueThin;
-		}
+        #addTimeButtonOG, #addTimeButton {
+            color: white;
+            width: 450px;
+            height: 100px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 1em;
+            border: 5px white solid;
+            border-radius: 100px;
+            cursor: pointer;
+            text-align: center;
+            font-size: 3em;
+            padding-top: 35px;
+            font-family: HelveticaNeueThin;
+        }
 
     
 
@@ -308,6 +311,7 @@
         var listItems = new Array;
         var tempArray = new Array;
         var secOnlineGameWeekOG = 18000;
+        var secHouseworkWeek = 3600;
         var mainScreenNextOnlineGameTime = "";
         
         
@@ -317,32 +321,45 @@
             // localStorage.itemStartTime = 0;
             // localStorage.currentItemID = -10
             //localStorage.localSecondsRemaining = 0;
-			//localStorage.pauseMilli = new Date().getTime();
-			//localStorage.countDown = false;
+            //localStorage.pauseMilli = new Date().getTime();
+            //localStorage.countDown = false;
             //end temp
 
             if (localStorage.getItem("localSecondsRemaining") === null) {
-                localStorage.timeDifferenceArray = "300000,600000,511041,0,18000000,1800000";
+                localStorage.timeDifferenceArray = "0,0,0,0,0,0";
                 localStorage.itemStartTime = 0;
                 localStorage.currentItemID = -10
                 //Housework Timer
                 localStorage.localSecondsRemaining = 0;
-				localStorage.pauseMilli = new Date().getTime();
-				localStorage.countDown = false;
-                localStorage.houseworkInList = "Bottom";
+                // localStorage.pauseMilli = new Date().getTime();
+                localStorage.pauseMilli = new Date().getTime();
+                localStorage.houseworkInList = "Top";
                 //Online Games
                 localStorage.localSecondsRemainingOG = 0;
-				localStorage.pauseMilliOG = new Date().getTime();
-				localStorage.countDownOG = false;
-                localStorage.onlineGameInList = "Bottom"
+                // localStorage.pauseMilliOG = new Date().getTime();
+                localStorage.pauseMilliOG = 0;
+                localStorage.countDownOG = false;
+                localStorage.onlineGameInList = "Top"
 
             }
-            if (localStorage.getItem("localSecondsRemainingOG") === null) {
-                localStorage.localSecondsRemainingOG = 0;
-				localStorage.pauseMilliOG = new Date().getTime();
-				localStorage.countDownOG = false;
-                localStorage.onlineGameInList = "Bottom"
-            }
+    //         if (localStorage.getItem("localSecondsRemainingOG") === null) {
+    //             localStorage.localSecondsRemainingOG = 0;
+                // localStorage.pauseMilliOG = new Date().getTime();
+                // localStorage.countDownOG = false;
+    //             localStorage.onlineGameInList = "Bottom"
+    //         }
+
+            // window.alert("localStorage.timeDifferenceArray = " + localStorage.timeDifferenceArray);
+            // window.alert("localStorage.itemStartTime = " + localStorage.itemStartTime);
+            // window.alert("localStorage.currentItemID = " + localStorage.currentItemID);
+            // window.alert("localStorage.localSecondsRemaining = " + localStorage.localSecondsRemaining);
+            // window.alert("localStorage.pauseMilli = " + localStorage.pauseMilli);
+            // window.alert("localStorage.countDown = " + localStorage.countDown);
+            // window.alert("localStorage.houseworkInList = " + localStorage.houseworkInList);
+            // window.alert("localStorage.localSecondsRemainingOG = " + localStorage.localSecondsRemainingOG);
+            // window.alert("localStorage.pauseMilliOG = " + localStorage.pauseMilliOG);
+            // window.alert("localStorage.countDownOG = " + localStorage.countDownOG);
+            // window.alert("localStorage.onlineGameInList = " + localStorage.onlineGameInList);
 
             listItems[0] = {itemName: "RSS", timeDifference: 0, id:0};
             listItems[1] = {itemName: "Game", timeDifference: 0, id:1};
@@ -412,6 +429,12 @@
             localStorage.currentItemID = -10;
             localStorage.itemStartTime = 0;
             sortAndDisplay();
+        }
+
+        function addExtraTime() {
+            var textBoxValue = hmsToSecondsOnly(document.getElementById('addExtraTaskTime').value)
+            localStorage.itemStartTime -= textBoxValue * 1000;
+            document.getElementById('addExtraTaskTime').value = ""
         }
 
         function sortAndDisplay() {
@@ -497,12 +520,12 @@
         ///
 
         function addZero(i) {
-				if (i < 10) {
-					i = "0" + i;
-				}
-				return i;
-			}
-			
+                if (i < 10) {
+                    i = "0" + i;
+                }
+                return i;
+            }
+            
         function getSecRemaining(pauseTime, remain, down, secWeek) { 
             //pauseTime = The millisec that the button was last pressed, remain = Seconds remaining when button was last pressed, down = If the timer is counting up (false) or down (true).
             
@@ -582,6 +605,28 @@
             }
         }
 
+        function hmsToSecondsOnly(str) {
+            
+
+            var p = str.split(':'), s = 0, m = 1, negitive = false;
+
+            while (p.length > 0) {
+                if (p < 0) {
+                    
+                    negitive = true;
+                    Math.abs(p);
+                }
+                s += m * parseInt(p.pop(), 10);
+                m *= 60;
+            }
+
+            if (negitive) {
+                s = -Math.abs(s)
+            }
+
+            return s;
+        }
+
         function hideClose() {
             document.getElementById("cancelButtonBoxOnlineGame").style.display = "none"
         }
@@ -592,104 +637,116 @@
         ///Start housework timer ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///
 
+        function addOnlineHouseworkSec() {
+            var textBoxValue = hmsToSecondsOnly(document.getElementById('addTimeHousework').value)
+            var pauseMillisecond
+            if (isNaN(textBoxValue)) {
+                textBoxValue = 0;
+            }
+
+            localStorage.pauseMilli =  (textBoxValue * 1000 * (604800 / secHouseworkWeek)) + parseFloat(localStorage.pauseMilli);
+
+            //localStorage.pauseMilliOG = pauseMillisecond - ((textBoxValue / (604800 / secOnlineGameWeekOG) * 1000))
+            document.getElementById('addTimeHousework').value = "";
+        }
 
         function houseworkTimer() {
-			var secondsRemaining = 10;
-			var secHouseworkWeek = 3600;
-			var secondsDisplaying;
-			var clockHours;
-			var clockMin;
-			var clockSec;
-			var runButton = document.getElementById('runButton');
-			var hour24;
-			var AMPM;
-			
+            var secondsRemaining = 10;
+            
+            var secondsDisplaying;
+            var clockHours;
+            var clockMin;
+            var clockSec;
+            var runButton = document.getElementById('runButton');
+            var hour24;
+            var AMPM;
+            
             setHouseworkGUI();
-			
-			runButton.onclick = function() {
-				localStorage.localSecondsRemaining = getSecRemaining(parseFloat(localStorage.pauseMilli), parseFloat(localStorage.localSecondsRemaining), localStorage.countDown == "true", secHouseworkWeek);
-				localStorage.countDown = (localStorage.countDown == "false");
-				/*localStorage.localSecondsRemaining = secondsDisplaying;*/
-				localStorage.pauseMilli = new Date().getTime();
-				setHouseworkGUI();
-			};
+            
+            runButton.onclick = function() {
+                localStorage.localSecondsRemaining = getSecRemaining(parseFloat(localStorage.pauseMilli), parseFloat(localStorage.localSecondsRemaining), localStorage.countDown == "true", secHouseworkWeek);
+                localStorage.countDown = (localStorage.countDown == "false");
+                /*localStorage.localSecondsRemaining = secondsDisplaying;*/
+                localStorage.pauseMilli = new Date().getTime();
+                setHouseworkGUI();
+            };
 
             setInterval(function(){ 
-				setHouseworkGUI();
-			}, 1000);
-			
-			
-			function setHouseworkGUI() {
-				var secRem = getSecRemaining(parseFloat(localStorage.pauseMilli), parseFloat(localStorage.localSecondsRemaining), localStorage.countDown == "true", secHouseworkWeek);
-				var down = (localStorage.countDown == "true");
-				/*var secDisplay;*/
-				var endTimeDate = new Date();
-				
-				if (secRem > 0){
+                setHouseworkGUI();
+            }, 1000);
+            
+            
+            function setHouseworkGUI() {
+                var secRem = getSecRemaining(parseFloat(localStorage.pauseMilli), parseFloat(localStorage.localSecondsRemaining), localStorage.countDown == "true", secHouseworkWeek);
+                var down = (localStorage.countDown == "true");
+                /*var secDisplay;*/
+                var endTimeDate = new Date();
+                
+                if (secRem > 0){
                     if (localStorage.houseworkInList == "Bottom"){
                         localStorage.houseworkInList = "Top"
                         sortAndDisplay();
                     }
-					secondsDisplaying = secRem;
-					// Timer
-					document.getElementById("timerText").innerHTML = "Housework time remaining:";
-					document.getElementById("timer").style.color = '#A6B1D2';
-					
-					// End time display
-					if (down) {
-							endTimeDate.setTime(new Date().getTime() + (secondsDisplaying*1000));
-								if (endTimeDate.getHours() > 12) {
-									hour24 = endTimeDate.getHours() - 12;
-									AMPM = "PM";
-								} else {
-									hour24 = endTimeDate.getHours();
-									AMPM = "AM";
-								}
-							document.getElementById("endTimeText").innerHTML = "Finsh at:";
-							document.getElementById("endTime").innerHTML = hour24 + ":" + addZero(endTimeDate.getMinutes()) + " " + AMPM;
-						} else {
-							document.getElementById("endTimeText").innerHTML = "";
-							document.getElementById("endTime").innerHTML = "";
-						}
-				} else {
+                    secondsDisplaying = secRem;
+                    // Timer
+                    document.getElementById("timerText").innerHTML = "Housework time remaining:";
+                    document.getElementById("timer").style.color = '#A6B1D2';
+                    
+                    // End time display
+                    if (down) {
+                            endTimeDate.setTime(new Date().getTime() + (secondsDisplaying*1000));
+                                if (endTimeDate.getHours() > 12) {
+                                    hour24 = endTimeDate.getHours() - 12;
+                                    AMPM = "PM";
+                                } else {
+                                    hour24 = endTimeDate.getHours();
+                                    AMPM = "AM";
+                                }
+                            document.getElementById("endTimeText").innerHTML = "Finsh at:";
+                            document.getElementById("endTime").innerHTML = hour24 + ":" + addZero(endTimeDate.getMinutes()) + " " + AMPM;
+                        } else {
+                            document.getElementById("endTimeText").innerHTML = "";
+                            document.getElementById("endTime").innerHTML = "";
+                        }
+                } else {
                     if (localStorage.houseworkInList == "Top"){
                         localStorage.houseworkInList = "Bottom"
                         sortAndDisplay();
                     }
-					// Timer
-					secondsDisplaying = -secRem;
-					document.getElementById("timerText").innerHTML = "Timer Expired - Current Bonus Time:";
-					document.getElementById("timer").style.color = '#AADEB3';
-					
-					document.getElementById("endTimeText").innerHTML = "";
-					document.getElementById("endTime").innerHTML = "";
-				}
-				
-				// button
-				if (down) {
-					document.getElementById("runButton").innerHTML = "End Housework";
-					document.getElementById("runButton").style.borderColor = '#FE4042';
-					document.getElementById("runButton").style.color = '#FE4042';
-				} else {
-					document.getElementById("runButton").innerHTML = "Start Housework";
-					document.getElementById("runButton").style.borderColor = '#90EE90';
-					document.getElementById("runButton").style.color = '#90EE90';
-				}
-				
-				// Time display
-				clockHours = Math.floor(secondsDisplaying/3600);
-				clockMin = Math.floor((secondsDisplaying % 3600) / 60);
-				clockSec = Math.floor(secondsDisplaying - ((clockHours * 3600) + (clockMin * 60)));
-				document.getElementById("timer").innerHTML = clockHours + ":" + addZero(clockMin) + ":" + addZero(clockSec);
-			}
-		};
+                    // Timer
+                    secondsDisplaying = -secRem;
+                    document.getElementById("timerText").innerHTML = "Timer Expired - Current Bonus Time:";
+                    document.getElementById("timer").style.color = '#AADEB3';
+                    
+                    document.getElementById("endTimeText").innerHTML = "";
+                    document.getElementById("endTime").innerHTML = "";
+                }
+                
+                // button
+                if (down) {
+                    document.getElementById("runButton").innerHTML = "End Housework";
+                    document.getElementById("runButton").style.borderColor = '#FE4042';
+                    document.getElementById("runButton").style.color = '#FE4042';
+                } else {
+                    document.getElementById("runButton").innerHTML = "Start Housework";
+                    document.getElementById("runButton").style.borderColor = '#90EE90';
+                    document.getElementById("runButton").style.color = '#90EE90';
+                }
+                
+                // Time display
+                clockHours = Math.floor(secondsDisplaying/3600);
+                clockMin = Math.floor((secondsDisplaying % 3600) / 60);
+                clockSec = Math.floor(secondsDisplaying - ((clockHours * 3600) + (clockMin * 60)));
+                document.getElementById("timer").innerHTML = clockHours + ":" + addZero(clockMin) + ":" + addZero(clockSec);
+            }
+        };
 
         ///
         ///Start online game timer ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///
 
         function addOnlineGameSec() {
-            var textBoxValue = parseFloat(document.getElementById('addTimeOG').value)
+            var textBoxValue = hmsToSecondsOnly(document.getElementById('addTimeOG').value)
             var pauseMillisecond
             if (isNaN(textBoxValue)) {
                 textBoxValue = 0;
@@ -702,36 +759,36 @@
         }
 
         function onlineGameTimer() {
-			
-			var secondsDisplayingOG;
-			var clockHoursOG;
-			var clockMinOG;
-			var clockSecOG;
-			var runButtonOG = document.getElementById('runButtonOG');
-			var hour24OG;
-			var AMPMOG;
+            
+            var secondsDisplayingOG;
+            var clockHoursOG;
+            var clockMinOG;
+            var clockSecOG;
+            var runButtonOG = document.getElementById('runButtonOG');
+            var hour24OG;
+            var AMPMOG;
                 
             setOnlineGameGUI();
-			
-			runButtonOG.onclick = function() {
-				localStorage.localSecondsRemainingOG = getSecRemaining(parseFloat(localStorage.pauseMilliOG), parseFloat(localStorage.localSecondsRemainingOG), localStorage.countDownOG == "true", secOnlineGameWeekOG);
-				localStorage.countDownOG = (localStorage.countDownOG == "false");
-				/*localStorage.localSecondsRemaining = secondsDisplaying;*/
-				localStorage.pauseMilliOG = new Date().getTime();
-				setOnlineGameGUI();
-			};
+            
+            runButtonOG.onclick = function() {
+                localStorage.localSecondsRemainingOG = getSecRemaining(parseFloat(localStorage.pauseMilliOG), parseFloat(localStorage.localSecondsRemainingOG), localStorage.countDownOG == "true", secOnlineGameWeekOG);
+                localStorage.countDownOG = (localStorage.countDownOG == "false");
+                /*localStorage.localSecondsRemaining = secondsDisplaying;*/
+                localStorage.pauseMilliOG = new Date().getTime();
+                setOnlineGameGUI();
+            };
 
             setInterval(function(){ 
-				setOnlineGameGUI();
-			}, 1000);
-			
-			
-			function setOnlineGameGUI() {
-				var secRemOG = getSecRemaining(parseFloat(localStorage.pauseMilliOG), parseFloat(localStorage.localSecondsRemainingOG), localStorage.countDownOG == "true", secOnlineGameWeekOG);
-				var downOG = (localStorage.countDownOG == "true");
+                setOnlineGameGUI();
+            }, 1000);
+            
+            
+            function setOnlineGameGUI() {
+                var secRemOG = getSecRemaining(parseFloat(localStorage.pauseMilliOG), parseFloat(localStorage.localSecondsRemainingOG), localStorage.countDownOG == "true", secOnlineGameWeekOG);
+                var downOG = (localStorage.countDownOG == "true");
                 var startTimeInSec
-				/*var secDisplay;*/
-				var endTimeDateOG = new Date();
+                /*var secDisplay;*/
+                var endTimeDateOG = new Date();
 
                 // Working out time to play again
                 
@@ -754,58 +811,58 @@
                     document.getElementById("nextTimeTextOG").innerHTML = "You can play again at " + formatAMPM(startAgainDate);
                     mainScreenNextOnlineGameTime = formatAMPM(startAgainDate);
                 }
-				
+                
                 // END
 
-				if (secRemOG > 0){
+                if (secRemOG > 0){
                     if (localStorage.onlineGameInList == "Bottom"){
                         localStorage.onlineGameInList = "Top"
                     }
-					secondsDisplayingOG = secRemOG;
-					// Timer
-					document.getElementById("timerTextOG").innerHTML = "Online game time remaining:";
-					document.getElementById("timerOG").style.color = '#90EE90';
-					
-					// End time display
-					if (downOG) {
-							endTimeDateOG.setTime(new Date().getTime() + (secondsDisplayingOG*1000));
-								if (endTimeDateOG.getHours() > 12) {
-									hour24OG = endTimeDateOG.getHours() - 12;
-									AMPMOG = "PM";
-								} else {
-									hour24OG = endTimeDateOG.getHours();
-									AMPMOG = "AM";
-								}
-						} else {
-						}
-				} else {
+                    secondsDisplayingOG = secRemOG;
+                    // Timer
+                    document.getElementById("timerTextOG").innerHTML = "Online game time remaining:";
+                    document.getElementById("timerOG").style.color = '#90EE90';
+                    
+                    // End time display
+                    if (downOG) {
+                            endTimeDateOG.setTime(new Date().getTime() + (secondsDisplayingOG*1000));
+                                if (endTimeDateOG.getHours() > 12) {
+                                    hour24OG = endTimeDateOG.getHours() - 12;
+                                    AMPMOG = "PM";
+                                } else {
+                                    hour24OG = endTimeDateOG.getHours();
+                                    AMPMOG = "AM";
+                                }
+                        } else {
+                        }
+                } else {
                     if (localStorage.onlineGameInList == "Top"){
                         localStorage.onlineGameInList = "Bottom"
                     }
-					// Timer
-					secondsDisplayingOG = -secRemOG;
-					document.getElementById("timerTextOG").innerHTML = "No online games now - Timer Expired";
-					document.getElementById("timerOG").style.color = '#FE4042';
-					
-				}
-				
-				// button
-				if (downOG) {
-					document.getElementById("runButtonOG").innerHTML = "End online game";
-					document.getElementById("runButtonOG").style.borderColor = '#FE4042';
-					document.getElementById("runButtonOG").style.color = '#FE4042';
-				} else {
-					document.getElementById("runButtonOG").innerHTML = "Start online game";
-					document.getElementById("runButtonOG").style.borderColor = '#90EE90';
-					document.getElementById("runButtonOG").style.color = '#90EE90';
-				}
-				
-				// Time display
-				clockHoursOG = Math.floor(secondsDisplayingOG/3600);
-				clockMinOG = Math.floor((secondsDisplayingOG % 3600) / 60);
-				clockSecOG = Math.floor(secondsDisplayingOG - ((clockHoursOG * 3600) + (clockMinOG * 60)));
-				document.getElementById("timerOG").innerHTML = clockHoursOG + ":" + addZero(clockMinOG) + ":" + addZero(clockSecOG);
-			}
+                    // Timer
+                    secondsDisplayingOG = -secRemOG;
+                    document.getElementById("timerTextOG").innerHTML = "No online games now - Timer Expired";
+                    document.getElementById("timerOG").style.color = '#FE4042';
+                    
+                }
+                
+                // button
+                if (downOG) {
+                    document.getElementById("runButtonOG").innerHTML = "End online game";
+                    document.getElementById("runButtonOG").style.borderColor = '#FE4042';
+                    document.getElementById("runButtonOG").style.color = '#FE4042';
+                } else {
+                    document.getElementById("runButtonOG").innerHTML = "Start online game";
+                    document.getElementById("runButtonOG").style.borderColor = '#90EE90';
+                    document.getElementById("runButtonOG").style.color = '#90EE90';
+                }
+                
+                // Time display
+                clockHoursOG = Math.floor(secondsDisplayingOG/3600);
+                clockMinOG = Math.floor((secondsDisplayingOG % 3600) / 60);
+                clockSecOG = Math.floor(secondsDisplayingOG - ((clockHoursOG * 3600) + (clockMinOG * 60)));
+                document.getElementById("timerOG").innerHTML = clockHoursOG + ":" + addZero(clockMinOG) + ":" + addZero(clockSecOG);
+            }
             sortAndDisplay();
         }
     </script>
@@ -815,6 +872,8 @@
             <div id="displayItemName"></div>
             <div id="countUpTimer">0:00:00</div>
             <div id="stopButton" onclick="stopItem()">Stop</div>
+            <input type="text" id="addExtraTaskTime" onfocus="hideClose()" onblur="showClose()" placeholder="hh:mm:ss" ></input>
+            <div id="addTimeButtonOG" onclick="addExtraTime()">Add time</div> 
             <div id="cancelButtonBoxDisplay">
                 <div id="cancelButton" onclick="cancelItem()">Cancel</div>
             </div>
@@ -825,6 +884,8 @@
             <div id="runButton"></div>
             <div id="endTimeText"></div>
             <div id="endTime"></div>
+            <input type="text" id="addTimeHousework" onfocus="hideClose()" onblur="showClose()" placeholder="hh:mm:ss" ></input>
+            <div id="addTimeButtonOG" onclick="addOnlineHouseworkSec()">Add time</div> 
             <div id="cancelButtonBoxHousework">
                  <div id="cancelButton" onclick="cancelItem()">Close</div>
             </div>
@@ -834,8 +895,8 @@
             <div id="timerOG"></div>
             <div id="runButtonOG"></div>
             <div id="nextTimeTextOG"></div>
-            <input type="number" id="addTimeOG" onfocus="hideClose()" onblur="showClose()"></input>
-            <div id="addTimeButtonOG" onclick="addOnlineGameSec()">Add seconds</div>          
+            <input type="text" id="addTimeOG" onfocus="hideClose()" onblur="showClose()" placeholder="hh:mm:ss" ></input>
+            <div id="addTimeButton" onclick="addOnlineGameSec()">Add time</div>          
             <div id="cancelButtonBoxOnlineGame">
                  <div id="cancelButton" onclick="cancelItem()">Close</div>
             </div>
