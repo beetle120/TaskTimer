@@ -135,22 +135,22 @@
         #countUpTimer {
             font-family: DigitalTime;
             color: #AADEB3;
-            font-size: 12vw;
+            font-size: 4em;
             text-align: center;
             padding-top: 2.7vh;
         }
         #stopButton{
             color: #e34f4f;
-            width: 450px;
-            height: 100px;
+            width: 3.7em;
+            height: 1.1em;
             margin-left: auto;
             margin-right: auto;
-            margin-top: 1em;
+            margin-top: 0.7em;
             border: 5px #e34f4f solid;
             border-radius: 100px;
             cursor: pointer;
             text-align: center;
-            font-size: 5em;
+            font-size: 2.7em;
             padding-top: 0.3em;
             padding-bottom: 0.3em;
             margin-bottom: 1em;
@@ -158,26 +158,19 @@
         }
         #cancelButton{
             color: white;
-            width: 450px;
-            height: 100px;
             margin-left: auto;
             margin-right: auto;
             border: 5px white solid;
             border-radius: 100px;
             cursor: pointer;
             text-align: center;
-            font-size: 5em;
+            font-family: HelveticaNeueThin;
+            font-size: 2.7em;
             padding-top: 0.3em;
             padding-bottom: 0.3em;
-            font-family: HelveticaNeueThin;
-        }
-        #cancelButtonBoxDisplay{
-            width: 100vw;
-            text-align: center;
-            height: 1vw;
-            position: absolute;
-            bottom: 10em;
-            height: 200px;
+            width: 7.3em;
+            height: 1.1em;
+            margin-top: 1em;
         }
         #cancelButtonBoxHousework{
             width: 100vw;
@@ -201,20 +194,21 @@
             color: white;
             font-family: HelveticaNeueThin;
             font-size: 3em;
-            margin: 50px 0px 0px 30px;
+            margin: 1em 0.2em 0.5em;
         }
         #timer {
             font-family: DigitalTime;
-            font-size: 20em;
+            font-size: 5em;
             color: #A6B1D2;
             text-align: center;
             padding: 0;
             margin: 0;
         }
+
         #runButton {
             color: white;
-            width: 450px;
-            height: 100px;
+            width: 7.3em;
+            height: 1.1em;
             margin-left: auto;
             margin-right: auto;
             margin-top: 1em;
@@ -222,21 +216,21 @@
             border-radius: 100px;
             cursor: pointer;
             text-align: center;
-            font-size: 3em;
-            padding-top: 35px;
+            font-size: 2.4em;
             font-family: HelveticaNeueThin;
+            padding: 0.3em;
         }
         
         #endTimeText {
             color: white;
             font-family: HelveticaNeueThin;
             font-size: 1.5em;
-            margin: 100px 0px 0px 200px;
+            margin: 1em 1em 0 0;
         }
         
         #endTime {
             font-family: DigitalTime;
-            font-size: 10em;
+            font-size: 5em;
             color: #A6B1D2;
             text-align: center;
         }
@@ -246,11 +240,11 @@
             color: white;
             font-family: HelveticaNeueThin;
             font-size: 3em;
-            margin: 50px 0px 0px 30px;
+            margin: 1em 0.2em 0.5em;
         }
         #timerOG {
             font-family: DigitalTime;
-            font-size: 20em;
+            font-size: 5em;
             color: #A6B1D2;
             text-align: center;
             padding: 0;
@@ -258,8 +252,8 @@
         }
         #runButtonOG {
             color: white;
-            width: 450px;
-            height: 100px;
+            width: 7.3em;
+            height: 1.1em;
             margin-left: auto;
             margin-right: auto;
             margin-top: 1em;
@@ -267,23 +261,23 @@
             border-radius: 100px;
             cursor: pointer;
             text-align: center;
-            font-size: 3em;
-            padding-top: 35px;
+            font-size: 2.4em;
             font-family: HelveticaNeueThin;
+            padding: 0.3em;
         }
         
         #nextTimeTextOG {
             color: white;
             font-family: HelveticaNeueThin;
-            font-size: 3.5em;
-            margin: 1.5em 0;
+            font-size: 2em;
+            margin: 1em 0;
         }
 
         #addTimeOG, #addTimeHousework, #addExtraTaskTime {
-            width: 80vw;
+            width: 6.6em;
             height: 1em;
             margin: 0 auto;
-            font-size: 5em;
+            font-size: 2.1em;
             background-color: #666;
             color: white;
             text-align: right;
@@ -292,18 +286,19 @@
 
         #addTimeButtonOG, #addTimeButton {
             color: white;
-            width: 450px;
-            height: 100px;
             margin-left: auto;
             margin-right: auto;
-            margin-top: 1em;
-            border: 5px white solid;
+            margin-top: 0.3em;
+            border: 2px white solid;
             border-radius: 100px;
             cursor: pointer;
             text-align: center;
-            font-size: 3em;
-            padding-top: 35px;
             font-family: HelveticaNeueThin;
+            font-size: 2em;
+            padding-top: 0.3em;
+            padding-bottom: 0.3em;
+            width: 7.3em;
+            height: 1.1em;
         }
 
         @media only screen and (max-width: 425px) {
@@ -634,13 +629,6 @@
 
             return s;
         }
-
-        function hideClose() {
-            document.getElementById("cancelButtonBoxOnlineGame").style.display = "none"
-        }
-        function showClose() {
-            document.getElementById("cancelButtonBoxOnlineGame").style.display = "block"
-        }
         ///
         ///Start housework timer ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///
@@ -880,11 +868,9 @@
             <div id="displayItemName"></div>
             <div id="countUpTimer">0:00:00</div>
             <div id="stopButton" onclick="stopItem()">Stop</div>
-            <input type="text" id="addExtraTaskTime" onfocus="hideClose()" onblur="showClose()" placeholder="hh:mm:ss" ></input>
+            <input type="text" id="addExtraTaskTime" placeholder="hh:mm:ss" ></input>
             <div id="addTimeButtonOG" onclick="addExtraTime()">Add time</div> 
-            <div id="cancelButtonBoxDisplay">
-                <div id="cancelButton" onclick="cancelItem()">Cancel</div>
-            </div>
+            <div id="cancelButton" onclick="cancelItem()">Cancel</div>
         </div>
         <div id="selectedHousework">
             <div id="timerText"></div> 
@@ -892,22 +878,18 @@
             <div id="runButton"></div>
             <div id="endTimeText"></div>
             <div id="endTime"></div>
-            <input type="text" id="addTimeHousework" onfocus="hideClose()" onblur="showClose()" placeholder="hh:mm:ss" ></input>
+            <input type="text" id="addTimeHousework" placeholder="hh:mm:ss" ></input>
             <div id="addTimeButtonOG" onclick="addOnlineHouseworkSec()">Add time</div> 
-            <div id="cancelButtonBoxHousework">
-                 <div id="cancelButton" onclick="cancelItem()">Close</div>
-            </div>
+            <div id="cancelButton" onclick="cancelItem()">Close</div>
         </div>
         <div id="selectedOnlineGame">
             <div id="timerTextOG"></div> 
             <div id="timerOG"></div>
             <div id="runButtonOG"></div>
             <div id="nextTimeTextOG"></div>
-            <input type="text" id="addTimeOG" onfocus="hideClose()" onblur="showClose()" placeholder="hh:mm:ss" ></input>
+            <input type="text" id="addTimeOG" placeholder="hh:mm:ss" ></input>
             <div id="addTimeButton" onclick="addOnlineGameSec()">Add time</div>          
-            <div id="cancelButtonBoxOnlineGame">
-                 <div id="cancelButton" onclick="cancelItem()">Close</div>
-            </div>
+            <div id="cancelButton" onclick="cancelItem()">Close</div>
         </div>
     </body>
 </html>
