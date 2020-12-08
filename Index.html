@@ -455,6 +455,14 @@
             //    listItems[i].timeDifference = parseFloat(tempArray[i]);
             //}
 
+
+            // check if there is a negative value
+            var hasNegative = listItems.some(v => v < 0);
+            if (hasNegative) {
+                window.alert("Something has gone wrong, check the console");
+                debugger;
+            }
+
             //sorts items in the array
             localStorage.timeDifferenceArray = (listItems.map(function(elem){return elem.timeDifference;}).join(","));
 
