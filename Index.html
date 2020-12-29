@@ -457,9 +457,16 @@
 
 
             // check if there is a negative value
-            var hasNegative = listItems.some(v => v < 0);
+            var hasNegative = listItems.some(v => v.timeDifference < 0);
             if (hasNegative) {
-                window.alert("Something has gone wrong, check the console");
+                window.alert("Something has gone wrong, has a negative value, check the console");
+                debugger;
+            }
+
+            // check if they are all numbers
+            var allNumbers = listItems.every(function(element) {return !isNaN(element.timeDifference)});
+            if (allNumbers == false) {
+                window.alert("Something has gone wrong, has a NaN, check the console");
                 debugger;
             }
 
