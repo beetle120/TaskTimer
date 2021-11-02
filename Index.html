@@ -485,9 +485,6 @@
 
             document.getElementById("display").innerHTML = "";
 
-            if (localStorage.onlineGameInList == "Top"){
-                document.getElementById("display").innerHTML += "<div class='displayItem' onclick='runOnlineGame()'><div class='itemName'>Online Game</div><div class='timeDifference'>" + mainScreenNextOnlineGameTime + "</div></div>";
-            }
             if (localStorage.houseworkInList == "Top"){
                 console.log(mainScreenNextOnlineGameTime);
                 document.getElementById("display").innerHTML += "<div class='displayItem' onclick='runHousework()'><div class='itemName'>Housework</div></div>";
@@ -498,10 +495,6 @@
             }
             if (localStorage.houseworkInList == "Bottom"){
                 document.getElementById("display").innerHTML += "<div class='displayItem' onclick='runHousework()'><div class='itemName'>Housework</div></div>";
-            }
-            if (localStorage.onlineGameInList == "Bottom"){
-                console.log(mainScreenNextOnlineGameTime);
-                document.getElementById("display").innerHTML += "<div class='displayItem' onclick='runOnlineGame()'><div class='itemName'>Online Game</div><div class='timeDifference'>" + mainScreenNextOnlineGameTime + "</div></div>";
             }
         }
         function formatTimeDisplay(preString, timeInMS) {
