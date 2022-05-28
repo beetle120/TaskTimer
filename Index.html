@@ -301,6 +301,16 @@
             height: 1.1em;
         }
 
+        #hideTitlesLink {
+            color: white;
+            font-size: 2rem;
+            padding: 2vh 2vw 0 2vw;
+            font-family: HelveticaNeueThin;
+            text-align: center;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
         @media only screen and (max-width: 425px) {
             .displayItem {
                 width: 100%;
@@ -342,7 +352,7 @@
                 localStorage.pauseMilliOG = 0;
                 localStorage.countDownOG = false;
                 localStorage.onlineGameInList = "Top"
-
+                localStorage.hideTitle = false;
             }
     //         if (localStorage.getItem("localSecondsRemainingOG") === null) {
     //             localStorage.localSecondsRemainingOG = 0;
@@ -485,16 +495,31 @@
 
             document.getElementById("display").innerHTML = "";
 
+            var houseworkTitle = "";
+                if (localStorage.hideTitle == "true") {
+                    houseworkTitle = "Task";
+                } else {
+                    houseworkTitle = "Housework";
+                }
+
             if (localStorage.houseworkInList == "Top"){
                 console.log(mainScreenNextOnlineGameTime);
-                document.getElementById("display").innerHTML += "<div class='displayItem' onclick='runHousework()'><div class='itemName'>Housework</div></div>";
+                document.getElementById("display").innerHTML += "<div class='displayItem' onclick='runHousework()'><div class='itemName'>"+houseworkTitle+"</div></div>";
             }
             // used to display the items
             for (var i = 0; i < listItems.length; i++) {
-                document.getElementById("display").innerHTML += "<div class='displayItem' onclick='runItem(" + listItems[i].id + ")'><div class='itemName'>" +  listItems[i].itemName + "</div><div class='timeDifference'>" + formatTimeDisplay("+", listItems[i].timeDifference) + "</div></div>";
+                var listItemName = "";
+                var timeDisplay = ""
+                if (localStorage.hideTitle == "true") {
+                    listItemName = "Task";
+                } else {
+                    listItemName = listItems[i].itemName;
+                    timeDisplay = formatTimeDisplay("+", listItems[i].timeDifference);
+                }
+                document.getElementById("display").innerHTML += "<div class='displayItem' onclick='runItem(" + listItems[i].id + ")'><div class='itemName'>" +  listItemName + "</div><div class='timeDifference'>" + timeDisplay + "</div></div>";
             }
             if (localStorage.houseworkInList == "Bottom"){
-                document.getElementById("display").innerHTML += "<div class='displayItem' onclick='runHousework()'><div class='itemName'>Housework</div></div>";
+                document.getElementById("display").innerHTML += "<div class='displayItem' onclick='runHousework()'><div class='itemName'>"+houseworkTitle+"</div></div>";
             }
         }
         function formatTimeDisplay(preString, timeInMS) {
@@ -869,6 +894,17 @@
             }
             sortAndDisplay();
         }
+
+        function hideTitle() {
+            console.log(localStorage.hideTitle);
+            if (localStorage.hideTitle == "false" || localStorage.hideTitle === null) {
+                localStorage.hideTitle = true;
+            } else {
+                localStorage.hideTitle = false;
+            }
+
+            sortAndDisplay();
+        }
     </script>
     <body>
         <div id="display"></div>
@@ -899,5 +935,6 @@
             <div id="addTimeButton" onclick="addOnlineGameSec()">Add time</div>          
             <div id="cancelButton" onclick="cancelItem()">Close</div>
         </div>
+        <div id="hideTitlesLink" onclick="hideTitle()">Hide Titles Toggle</div>
     </body>
 </html>
